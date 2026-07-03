@@ -1,0 +1,51 @@
+{
+  "demand": {
+    "duration_hours": 4,
+    "max_latency_ms": 100,
+    "workload_tflops": 50
+  },
+  "power_sources": [
+    {
+      "location": {
+        "grid_capacity_mw": 120,
+        "latency_ms": 30,
+        "name": "Iceland-Geo",
+        "renewable_pct": 85
+      },
+      "satellite_attestation": {
+        "confirmed_renewable": true,
+        "evidence_hash": "aeb4f231ddab2a7b94c257e7f5b74a6c00809eedc9e00aa78ff1c6bcf8c92c96",
+        "tasking_id": "ORB-IC-01",
+        "timestamp": "2026-07-03T00:00:00+00:00"
+      }
+    },
+    {
+      "location": {
+        "grid_capacity_mw": 200,
+        "latency_ms": 80,
+        "name": "Sahara-Solar",
+        "renewable_pct": 90
+      },
+      "satellite_attestation": {
+        "confirmed_renewable": true,
+        "evidence_hash": "dabfd39f5764c0542673b521d16dd4051467a28da85ed70f27930232e13c4a5f",
+        "tasking_id": "ORB-SA-02",
+        "timestamp": "2026-07-03T00:00:00+00:00"
+      }
+    },
+    {
+      "location": {
+        "grid_capacity_mw": 300,
+        "latency_ms": 15,
+        "name": "Coal-Belt",
+        "renewable_pct": 20
+      },
+      "satellite_attestation": {
+        "confirmed_renewable": true,
+        "evidence_hash": "1f6e4d1147a4be044a0c12b0b82bfa265406b544b51db0e17c4293f5dfc63339",
+        "tasking_id": "ORB-CB-03",
+        "timestamp": "2026-07-03T00:00:00+00:00"
+      }
+    }
+  ]
+}

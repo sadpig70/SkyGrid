@@ -1,0 +1,5 @@
+{
+  "duration_hours": 4,
+  "max_latency_ms": 100,
+  "workload_tflops": 50
+}

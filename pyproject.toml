@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sky-grid"
+version = "0.1.0"
+description = "Power-compute-satellite attestation mesh: score renewable power availability, route mobile compute roaming, and verify orbital provenance."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Jung Wook Yang" }]
+keywords = ["energy", "satellite", "compute", "roaming", "provenance", "deterministic"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+sky-grid = "SkyGrid.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["SkyGrid"]
