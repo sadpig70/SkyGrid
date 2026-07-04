@@ -60,6 +60,8 @@ class TestPlanComputeRoaming(unittest.TestCase):
         s = samples()
         plan = plan_compute_roaming(s["demand"], s["power_sources"])
         self.assertEqual(plan["selected_location"], "Sahara-Solar")
+        self.assertEqual(plan["selected_tasking_id"], "ORB-SA-02")
+        self.assertTrue(plan["selected_evidence_hash"])
         self.assertAlmostEqual(plan["availability_score"], 108.0)
         self.assertEqual(plan["allocation_tflop_hours"], 200)
         self.assertEqual(len(plan["all_scores"]), 3)
@@ -67,8 +69,18 @@ class TestPlanComputeRoaming(unittest.TestCase):
     def test_selected_has_top_score(self):
         s = samples()
         plan = plan_compute_roaming(s["demand"], s["power_sources"])
-        top = max(entry["availability_score"] for entry in plan["all_scores"])
+        top = max(entry["availability_score"] for entry in plan["all_scores"] if entry["eligible"])
         self.assertAlmostEqual(plan["availability_score"], top)
+
+    def test_rejects_verified_source_over_latency_limit(self):
+        s = samples()
+        demand = dict(s["demand"])
+        demand["max_latency_ms"] = 50
+        plan = plan_compute_roaming(demand, s["power_sources"])
+        self.assertEqual(plan["selected_location"], "Iceland-Geo")
+        sahara = next(e for e in plan["all_scores"] if e["location"] == "Sahara-Solar")
+        self.assertFalse(sahara["eligible"])
+        self.assertEqual(sahara["rejection_reason"], "latency_exceeds_demand")
 
     def test_empty_power_sources_yields_no_selection(self):
         plan = plan_compute_roaming(samples()["demand"], [])
@@ -88,6 +100,7 @@ class TestVerifyProvenance(unittest.TestCase):
         self.assertEqual(result["chain_length"], 3)
         self.assertTrue(result["satellite_verified"])
         self.assertEqual(result["selected_location"], "Sahara-Solar")
+        self.assertEqual(result["selected_tasking_id"], "ORB-SA-02")
 
     def test_denied_chain_is_invalid(self):
         result = verify_provenance(self._plan(), samples()["satellite_chain_denied"])

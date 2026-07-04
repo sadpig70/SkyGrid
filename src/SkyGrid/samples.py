@@ -64,15 +64,15 @@ COMPUTE_DEMAND = {
 }
 
 SATELLITE_CHAIN_CONFIRMED = [
-    {"tasking_id": "ORB-IC-01", "evidence_hash": _digest("orb-ic-01"), "confirmed": True},
-    {"tasking_id": "ORB-SA-02", "evidence_hash": _digest("orb-sa-02"), "confirmed": True},
-    {"tasking_id": "ORB-CB-03", "evidence_hash": _digest("orb-cb-03"), "confirmed": True},
+    {"tasking_id": "ORB-IC-01", "evidence_hash": _digest("iceland-geo"), "confirmed": True},
+    {"tasking_id": "ORB-SA-02", "evidence_hash": _digest("sahara-solar"), "confirmed": True},
+    {"tasking_id": "ORB-CB-03", "evidence_hash": _digest("coal-belt"), "confirmed": True},
 ]
 
 SATELLITE_CHAIN_DENIED = [
-    {"tasking_id": "ORB-IC-01", "evidence_hash": _digest("orb-ic-01"), "confirmed": True},
-    {"tasking_id": "ORB-SA-02", "evidence_hash": _digest("orb-sa-02"), "confirmed": False},
-    {"tasking_id": "ORB-CB-03", "evidence_hash": _digest("orb-cb-03"), "confirmed": True},
+    {"tasking_id": "ORB-IC-01", "evidence_hash": _digest("iceland-geo"), "confirmed": True},
+    {"tasking_id": "ORB-SA-02", "evidence_hash": _digest("sahara-solar"), "confirmed": False},
+    {"tasking_id": "ORB-CB-03", "evidence_hash": _digest("coal-belt"), "confirmed": True},
 ]
 
 
